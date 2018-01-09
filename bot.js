@@ -1,12 +1,14 @@
 const Discord = require('discord.io')
 const logger = require('winston')
 const bodyParser = require('body-parser')
+const auth = require('./auth.json')
 const mongoose = require('mongoose')
+
 
 require('./models/Player')
 require('./models/Item')
 
-mongoose.connect('', {
+mongoose.connect(auth.DB_TOKEN, {
   useMongoClient: true
 })
 
@@ -26,7 +28,7 @@ logger.add(logger.transports.Console, {
 logger.level = 'debug'
 
 var bot = new Discord.Client({
-  token: '',
+  token: auth.BOT_TOKEN,
   autorun: true
 })
 

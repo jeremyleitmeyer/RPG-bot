@@ -2,9 +2,10 @@ const mongoose = require('mongoose')
 const Player = require('./models/Player')
 const Item = require('./models/Item')
 const self = require('./shop.js')
+const auth = require('./auth.json')
 
 exports.admin_add = function (bot, channelID, userID, itemName, itemPrice) {
-  if (userID === '140622099055247360') {
+  if (userID === auth.ADMIN || userID === auth.ADMIN2) {
     if (itemName === undefined || itemPrice === undefined) {
       bot.sendMessage({
         to: channelID,
