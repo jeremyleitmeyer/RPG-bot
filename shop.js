@@ -4,7 +4,7 @@ const Item = require('./models/Item')
 const self = require('./shop.js')
 
 exports.admin_add = function (bot, channelID, userID, itemName, itemPrice) {
-  if (userID === '') {
+  if (userID === '140622099055247360') {
     if (itemName === undefined || itemPrice === undefined) {
       bot.sendMessage({
         to: channelID,
@@ -15,7 +15,10 @@ exports.admin_add = function (bot, channelID, userID, itemName, itemPrice) {
         name: itemName,
         price: itemPrice
       }).save()
-      self.showShop(bot, channelID, userID, itemName, itemPrice)
+      bot.sendMessage({
+        to: channelID,
+        message: '```Item added !```'
+      })
     }
   } else {
     bot.sendMessage({
